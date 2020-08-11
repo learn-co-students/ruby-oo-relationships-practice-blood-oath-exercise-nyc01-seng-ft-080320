@@ -36,5 +36,6 @@ class Follower
     def join_date
         Time.now.strftime("%Y-%m-%d")
     end
+    
 
 end

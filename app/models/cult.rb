@@ -45,6 +45,25 @@ class Cult
         self.all.find_all {|cult| cult.location == location}
     end
 
+    def average_age
+        count = self.follower.count
+        self.followers.sum {|fol| fol.age/count}
+    end
+
+    def my_followers_mottos
+        self.followers.each {|fol| puts fol.motto}
+    end
+
+    def self.least_popular
+        self.all.min_by {|cult| cult.followers.count}
+    end
+
+    def self.most_common_by_location
+        locs = self.all.map {|cult| cult.location}
+        locs.max_by {|loc| locs.count(loc)}
+    end
+
+
     private
     def join_date
         Time.now.strftime("%Y-%m-%d")
